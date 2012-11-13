@@ -10,8 +10,14 @@ class UrlsController < ApplicationController
   
   def create
     # @url = Url.new(params[:url])
-    @url = Url.new(:original_url => params[:url][:original_url],
-                   :short_url => short_url(params[:url][:original_url]))
+    if params[:url][:short_url] == ""
+      @url = Url.new(:original_url => params[:url][:original_url],
+                     :short_url => short_url(params[:url][:original_url]))
+      puts "no short url was here"
+    else
+      @url = Url.new(:original_url => params[:url][:original_url],
+                     :short_url => params[:url][:short_url])
+    end
     
     if @url.save
       redirect_to @url
