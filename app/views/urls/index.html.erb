@@ -11,7 +11,8 @@
 <% @urls.each do |url| %>
 	<tr>
 		<td width="50" align="center"><%= url.count %></td>
-		<td width="200"><a href="<%= url.short_url %>" target="_blank">localhost:3000/<%= url.short_url %></a></td>
+		<!-- <td width="200"><a href="<%= url.short_url %>" target="_blank">localhost:3000/<%= url.short_url %></a></td> -->
+		<td width="200"><%= link_to "http://localhost:3000/#{url.short_url}", "http://localhost:3000/#{url.short_url}", :target => "_blank" %></a></td>
 		<td width="500"><%= url.original_url%></td>
 	<tr>
 <% end %>

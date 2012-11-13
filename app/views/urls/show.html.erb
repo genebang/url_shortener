@@ -6,7 +6,8 @@
 		<td width="200">Original URL</td>
 	<tr>
 	<tr>
-		<td width="200">localhost:3000/<%= @url.short_url %></a></td>
+		<!-- <td width="200">localhost:3000/<%= @url.short_url %></a></td> -->
+		<td width="200"><%= link_to "http://localhost:3000/#{@url.short_url}", "http://localhost:3000/#{@url.short_url}", :target => "_blank" %></td>
 		<td width="200"><%= @url.original_url%></td>
 	<tr>
 </table>
