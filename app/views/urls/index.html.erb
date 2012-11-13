@@ -1,0 +1,17 @@
+<h2>URL Shortener Index</h2>
+
+<p><%= link_to 'Create New URL', new_url_path %></p>
+
+<table border="0">
+	<tr>
+		<td width="200">Short URL</td>
+		<td width="200">Original URL</td>
+	<tr>
+<% @urls.each do |url| %>
+	<tr>
+		<td width="200"><a href="<%= url.short_url %>" target="_blank">localhost:3000/<%= url.short_url %></a></td>
+		<td width="500"><%= url.original_url%></td>
+	<tr>
+<% end %>
+</table>
+	

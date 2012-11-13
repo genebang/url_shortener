@@ -1,0 +1,23 @@
+<h2>URL To Shorten</h2>
+
+<%= form_for @url do |f| %>
+
+	<% if @url.errors.any? %>
+	  <div id="error_explanation">
+	    <h2><%= pluralize(@url.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+	    <ul>
+	    <% @url.errors.full_messages.each do |msg| %>
+	      <li><%= msg %></li>
+	    <% end %>
+	    </ul>
+	  </div>
+	<% end %>
+
+
+	<%= f.label "Original URL:" %>
+	<%= f.text_field :original_url , :value => "http://"%>
+	<%= f.submit "Shorten URL" %>
+<% end %>
+
+<p><%= link_to 'See current URLs', urls_path %></p>

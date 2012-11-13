@@ -1,0 +1,17 @@
+<h2>Shortened URL</h2>
+
+<table border="0">
+	<tr>
+		<td width="200">Short URL</td>
+		<td width="200">Original URL</td>
+	<tr>
+	<tr>
+		<td width="200">localhost:3000/<%= @url.short_url %></a></td>
+		<td width="200"><%= @url.original_url%></td>
+	<tr>
+</table>
+
+
+<p><%= link_to 'Create New URL', new_url_path %></p>
+
+<p><%= link_to 'See current URLs', urls_path %></p>
