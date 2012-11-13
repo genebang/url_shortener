@@ -29,7 +29,7 @@ class UrlsController < ApplicationController
   def go_to_url
     @url = Url.find_by_short_url!(params[:short_url])
     @url.count += 1
-    # @url.save
+    @url.save
     redirect_to @url.original_url
   end
     
