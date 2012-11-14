@@ -4,7 +4,7 @@ UrlShortner::Application.routes.draw do
   root :to => 'urls#index'
 
   match "/:short_url" => 'urls#go_to_url'
-  match "/urls/:short_url" => 'urls#go_to_url'
+  # match "/urls/:short_url" => 'urls#go_to_url'
   
   
   # The priority is based upon order of creation:
