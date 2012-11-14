@@ -1,7 +1,16 @@
 UrlShortner::Application.routes.draw do
-  resources :urls
   
-  root :to => 'urls#index'
+  get "logout" => "sessions#destroy", :as => "logout"
+  get "login" => "sessions#new", :as => "login"
+  get "signup" => "users#new", :as => "signup"
+
+  resources :sessions  
+  resources :users do
+    resources :urls
+  end
+  
+  root :to => 'users#new'
+  # root :to => 'urls#index'
 
   match "/:short_url" => 'urls#go_to_url'
   # match "/urls/:short_url" => 'urls#go_to_url'

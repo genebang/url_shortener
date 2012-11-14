@@ -9,22 +9,40 @@ class UrlsController < ApplicationController
   end
   
   def create
-    # @url = Url.new(params[:url])
+    @user = User.find(params[:user_id])
+    # @url = @user.urls.build(params[:url])
+    
     if params[:url][:short_url] == ""
-      @url = Url.new(:original_url => params[:url][:original_url],
-                     :short_url => short_url(params[:url][:original_url]))
-      puts "no short url was here"
+      @url = @user.urls.build(:original_url => params[:url][:original_url],
+                              :short_url => short_url(params[:url][:original_url]))
     else
-      @url = Url.new(:original_url => params[:url][:original_url],
-                     :short_url => params[:url][:short_url])
+      @url = @user.urls.build(:original_url => params[:url][:original_url],
+                             :short_url => params[:url][:short_url])
     end
     
     if @url.save
-      redirect_to @url
+      # redirect_to @user
       # redirect_to urls_path
+      redirect_to :controller => 'users', :action => 'index', :id => @user.id
     else
-      redirect_to new_url_path
+      redirect_to user_urls_path
     end
+    
+    # # @url = Url.new(params[:url])
+    # if params[:url][:short_url] == ""
+    #   @url = Url.new(:original_url => params[:url][:original_url],
+    #                  :short_url => short_url(params[:url][:original_url]))
+    # else
+    #   @url = Url.new(:original_url => params[:url][:original_url],
+    #                  :short_url => params[:url][:short_url])
+    # end
+    # 
+    # if @url.save
+    #   redirect_to @url
+    #   # redirect_to urls_path
+    # else
+    #   redirect_to new_user_url_path
+    # end
   end
   
   def show

@@ -1,7 +1,16 @@
-<!-- <h2>URL Shortener Index</h2>
+<h2>User Index</h2>
 
-<p><%= link_to 'Create New URL', user_urls_path %></p>
+<h3>Create A Link</h3>
+<%= form_for [@user, @url = Url.new] do |f| %>
+	<%= f.label "Original URL:" %>
+	<%= f.text_field :original_url , :value => "http://"%>
+	<%= f.submit "Shorten URL" %><br>
+	<%= f.label "Vanity URL:  " %>
+	<%= f.text_field :short_url %>
+	<%= f.label "(optional)" %>
+<% end %>
 
+<h3>Existing Links</h3>
 <table border="0">
 	<tr>
 		<td width="50" align="left">Visits</td>
@@ -16,4 +25,4 @@
 		<td width="500"><%= url.original_url%></td>
 	<tr>
 <% end %>
-</table> -->
+</table>
